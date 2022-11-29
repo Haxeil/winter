@@ -26,10 +26,12 @@ pub fn apply_gravity_to_bodies(
             if !output.grounded {
                 velocity.0.y -= GRAVITY_SCALE;
                 player.jumping = false;
+                player.grounded = false;
 
             } else {
                 if !player.jumping {
                     velocity.0.y = 0.;
+                    player.grounded = true;
                 }
             }
         }

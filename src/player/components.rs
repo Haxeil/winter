@@ -2,7 +2,8 @@ use bevy::prelude::*;
 
 #[derive(Component)]
 pub struct Player {
-    pub(crate) jumping: bool
+    pub(crate) jumping: bool,
+    pub(crate) grounded: bool,
 }
 
 #[derive(Component)]

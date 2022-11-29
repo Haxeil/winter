@@ -45,7 +45,7 @@ fn add_player(
             ..default()
         })
         .insert((
-            Player {jumping: false},
+            Player {jumping: false, grounded: true},
             Vel::zero(),
             Speed(SPEED),
             Acceleration(ACCELERATION),

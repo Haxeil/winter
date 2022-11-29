@@ -65,12 +65,15 @@ pub fn player_jump(
     if input.just_pressed(KeyCode::Space) {
         let (mut player, mut velocity) = query.get_single_mut().unwrap();
         
-        if player.jumping {
+        if player.jumping  {
             return;
         }
+        
+        if player.grounded {
+            player.jumping = true;
+            velocity.0.y = JUMP_POWER;
+        }
 
-        player.jumping = true;
-        velocity.0.y = JUMP_POWER;
 
     }
 
