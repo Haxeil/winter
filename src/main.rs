@@ -76,24 +76,24 @@ fn setup(
 ) {
     // plane
     commands.spawn(PbrBundle {
-        mesh: meshes.add(Mesh::from(shape::Plane { size: 50.0 })),
-        material: materials.add(Color::rgb(1.0, 0.0, 0.0).into()),
+        mesh: meshes.add(Mesh::from(shape::Plane { size: 200.0 })),
+        material: materials.add(Color::rgb(1.0, 1.0, 1.0).into()),
         ..default()
     }).insert((
         RigidBody::Fixed,
-        Collider::cuboid(16.0, 0., 16.0)
+        Collider::cuboid(200.0, 0., 200.0)
     ));
 
     // light
     commands.spawn(PointLightBundle {
         point_light: PointLight {
-            intensity: 100.0,
+            intensity: 8500.0,
             shadows_enabled: true,
             range: 1000.0,
             radius: 1000.0,
             ..default()
         },
-        transform: Transform::from_xyz(4.0, 15.0, 4.0),
+        transform: Transform::from_xyz(4.0, 30.0, 4.0),
         ..default()
     });
     // camera
