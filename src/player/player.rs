@@ -6,5 +6,5 @@ pub const FRICTION: f32 = 0.1;
 
 pub const MAX_HEALTH: f32 = 100.0;
 
-pub const JUMP_POWER: f32 = SPEED * 5.0;
+pub const JUMP_POWER: f32 = SPEED * 4.0;
 

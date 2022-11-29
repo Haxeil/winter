@@ -1,7 +1,7 @@
 pub const TIME_STEP: f32 = 1.0 / 60.0;
 
 // gravity power;
-pub const GRAVITY_SCALE: f32 = 50.0;
+pub const GRAVITY_SCALE: f32 = 10.0;
 
 pub const GAME_SPEED: f32 = 1.0;
 

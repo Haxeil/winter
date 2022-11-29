@@ -1,7 +1,9 @@
 use bevy::prelude::*;
 
 #[derive(Component)]
-pub struct Player;
+pub struct Player {
+    pub(crate) jumping: bool
+}
 
 #[derive(Component)]
 pub struct Position(pub Vec3);

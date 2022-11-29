@@ -22,6 +22,7 @@ fn main() {
         .add_system_set(
             SystemSet::new()
                 .with_run_criteria(FixedTimestep::step(TIME_STEP as f64))
+                .with_system(player_jump)
                 .with_system(apply_gravity_to_bodies)
                 .with_system(handle_movement)
                 .with_system(apply_movement_to_bodies),            )
@@ -44,7 +45,7 @@ fn add_player(
             ..default()
         })
         .insert((
-            Player,
+            Player {jumping: false},
             Vel::zero(),
             Speed(SPEED),
             Acceleration(ACCELERATION),
@@ -81,16 +82,16 @@ fn setup(
         ..default()
     }).insert((
         RigidBody::Fixed,
-        Collider::cuboid(200.0, 0., 200.0)
+        Collider::cuboid(50.0, 0., 50.0)
     ));
 
     // light
     commands.spawn(PointLightBundle {
         point_light: PointLight {
-            intensity: 8500.0,
+            intensity: 10_500.0,
             shadows_enabled: true,
-            range: 1000.0,
-            radius: 1000.0,
+            range: 1_000.0,
+            radius: 1_000.0,
             ..default()
         },
         transform: Transform::from_xyz(4.0, 30.0, 4.0),

@@ -2,7 +2,6 @@ use std::f32::consts::TAU;
 use std::ops::Rem;
 use std::ops::{Range, RangeInclusive};
 
-
 const CMP_EPSILON: f32 = 0.00001;
 
 /// Coordinate system conversion: polar -> cartesian

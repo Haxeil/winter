@@ -4,11 +4,9 @@ use bevy_rapier3d::prelude::{Velocity, KinematicCharacterController};
 #[doc(inline)]
 use crate::math::math::*;
 
-use crate::game::defaults::*;
-
 use super::{
     components::*,
-    player::{ACCELERATION, FRICTION},
+    player::{ACCELERATION, FRICTION, JUMP_POWER},
 };
 
 pub fn handle_movement(
@@ -44,15 +42,36 @@ pub fn handle_movement(
             || input.pressed(KeyCode::S) && input.pressed(KeyCode::D)
             || input.pressed(KeyCode::S) && input.pressed(KeyCode::A)
         {
+            let temp_jump = velocity.0.y;
+
             velocity.0 = velocity.0.normalize() * speed.0;
+
+            velocity.0.y = temp_jump;
+
         }
         
         let v = velocity.0.clone();
 
-        velocity.0 += v * time.delta_seconds();
-        
-        
+
+        velocity.0 += v * time.delta_seconds();        
 
     }
 }
 
+pub fn player_jump(
+    mut query: Query<(&mut Player, &mut Vel)>,
+    input: Res<Input<KeyCode>>,
+) {
+    if input.just_pressed(KeyCode::Space) {
+        let (mut player, mut velocity) = query.get_single_mut().unwrap();
+        
+        if player.jumping {
+            return;
+        }
+
+        player.jumping = true;
+        velocity.0.y = JUMP_POWER;
+
+    }
+
+}
