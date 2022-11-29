@@ -24,8 +24,7 @@ fn main() {
                 .with_run_criteria(FixedTimestep::step(TIME_STEP as f64))
                 .with_system(apply_gravity_to_bodies)
                 .with_system(handle_movement)
-                .with_system(apply_movement_to_bodies),
-            )
+                .with_system(apply_movement_to_bodies),            )
         .run();
 }
 
@@ -54,7 +53,7 @@ fn add_player(
             Ccd::enabled(),
             Collider::capsule(Vec3::ZERO, Vec3::ZERO, 1.0),
             KinematicCharacterController { 
-                up: Vec3::Z, 
+                up: Vec3::Y, 
                 max_slope_climb_angle: 45.0_f32.to_radians(),
                 // Automatically slide down on slopes smaller than 30 degrees.
                 min_slope_slide_angle: 30.0_f32.to_radians(),
