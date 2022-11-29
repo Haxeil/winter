@@ -7,14 +7,13 @@ pub struct Player;
 pub struct Position(pub Vec3);
 
 #[derive(Component, Debug)]
-pub struct Velocity(pub Vec3);
+pub struct Vel(pub Vec3);
 
-impl Velocity {
+impl Vel {
     pub fn zero() -> Self {
-        Velocity(Vec3::ZERO)
+        Self(Vec3::ZERO)
     }
 }
-
 // Maybe add all of this into a 'physics' struct/Component.
 #[derive(Component)]
 pub struct Speed(pub f32);
